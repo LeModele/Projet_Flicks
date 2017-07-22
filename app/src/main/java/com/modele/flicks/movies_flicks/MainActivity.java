@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
        // setTitle("les Films");
        // getActionBar().setIcon(R.drawable.movie);
         //set up adapter
+
         lvMovies = ButterKnife.findById(this, R.id.lvMovies);
         movies = new ArrayList<>();
         movieAdapter = new MoviesAdapter(this, movies);
@@ -75,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
         setUpClickListener();
 
     }
+
+
+
 
     private void setUpClickListener() {
         lvMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -113,8 +119,28 @@ public class MainActivity extends AppCompatActivity {
 
         if (!connectivity) {
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+// Add the buttons
+            builder.setTitle("Connexion");
+            builder.setMessage("Verifier la Connexion internet");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    fetchData(Utils.getClient());
+                }
+            });
+
+// Set other dialog properties
+
+
+// Create the AlertDialog
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            // Showing Alert Message
+
             Toast.makeText(this, "Impossible de continuer, verifier la connxion internet", Toast.LENGTH_LONG).show();
-        } else {
+        }
+
+        else {
             client.get(URL, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

@@ -51,7 +51,7 @@ public class MovieTrailer extends YouTubeBaseActivity  {
         boolean connectivity = Utils.checkForConnectivity(this);
 
         if (!connectivity) {
-            Toast.makeText(this, "Virifier votre connexion Internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Verifier votre connexion Internet", Toast.LENGTH_LONG).show();
         } else {
             Utils.getClient().get(url, new JsonHttpResponseHandler() {
                 @Override
