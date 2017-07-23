@@ -9,11 +9,24 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme1" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/Rouge</item>
+        <item name="colorPrimaryDark">@color/Rouge</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/moins_jaune</item>
         <item name="colorControlActivated">@color/jaune</item>
     </style>
 
+
+    <style name="RatingBar1" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/moins_Rouge</item>
+        <item name="colorControlActivated">@color/Rouge</item>
+    </style>
     <style name="NewAppTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="colorControlNormal">@color/bleu</item>
 

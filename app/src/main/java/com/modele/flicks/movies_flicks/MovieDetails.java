@@ -29,10 +29,10 @@ public class MovieDetails extends AppCompatActivity {
         setContentView(R.layout.activity_movie_details);
 
         final Movie movie = (Movie) getIntent().getSerializableExtra("movie");
-
+        setTitle("Details Film");
 // find bouton
         btnretour =(Button)findViewById(R.id.btnretour);
-        btntrailer=(Button)findViewById(R.id.btntrailer);
+       // btntrailer=(Button)findViewById(R.id.btntrailer);
         //retrieve all fields and set their value
         tvTitle = ButterKnife.findById(this, R.id.title);
         tvTitle.setText(movie.getOriginalTitle());
@@ -73,14 +73,14 @@ public class MovieDetails extends AppCompatActivity {
             }
         });
 
-        btntrailer.setOnClickListener(new View.OnClickListener() {
+      /*  btntrailer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=null;
                 intent=new Intent(MovieDetails.this,MovieTrailer.class);
                 if(intent!=null){intent.putExtra("movie",movie); startActivity(intent);}
             }
-        });
+        });*/
 
         Picasso.with(this).load(movie.getBackdropPath())
                 .transform(new RoundedCornersTransformation(20, 20))

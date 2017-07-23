@@ -15,12 +15,13 @@ import com.modele.flicks.movies_flicks.MovieView;
 import butterknife.ButterKnife;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 import static com.modele.flicks.movies_flicks.R.layout.item_movie;
+import static com.modele.flicks.movies_flicks.R.layout.item_popular_movie;
 
 /**
  * Created by domin on 20-Jul-17.
  */
 public class MovieView extends RelativeLayout {
-    private ImageView ivPicture;
+    private ImageView ivPicture; private ImageView ivpopuImage;
     private TextView tvTitle;
     private TextView tvOverview;
 
@@ -35,7 +36,7 @@ public class MovieView extends RelativeLayout {
     public MovieView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-
+       // LayoutInflater.from(context).inflate(item_popular_movie, this, true);
         LayoutInflater.from(context).inflate(item_movie, this, true);
         setupChildren();
     }
@@ -46,7 +47,8 @@ public class MovieView extends RelativeLayout {
         ivPicture = ButterKnife.findById(this, R.id.ivMovieImage);
         tvTitle = ButterKnife.findById(this, R.id.tvTitle);
         tvOverview = ButterKnife.findById(this, R.id.tvOverview);
-    }
+        //ivpopuImage = ButterKnife.findById(this, R.id.ivMovieImage1);
+}
 
 
     public static MovieView inflate(ViewGroup parent) {
@@ -84,6 +86,7 @@ public class MovieView extends RelativeLayout {
             int orientation = getOrientation();
             if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 imageToLoad = movie.getPosterPath();
+                // imageToLoad = movie.getBackdropPath();
             } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
                // imageToLoad = movie.getBackdropPath();
                 imageToLoad = movie.getBackdropPathLand();
@@ -99,23 +102,23 @@ public class MovieView extends RelativeLayout {
             setupChildren();
             imageToLoad = movie.getBackdropPath();
             drawImage(imageToLoad);
-            
+
         }
     }
 
 
     //display data retrieved from the movie
     public void setItem(Movie movie) {
-
-        depending(movie);
-
-        //determine la quand l'orientation de l'ecran
         String imageToLoad = null;
+        //depending(movie);
+        if(movie.getRating()<=5.0)
+        {
+        //determine la quand l'orientation de l'ecran
+
         int orientation = getContext().getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             imageToLoad = movie.getPosterPath();
         } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            //imageToLoad = movie.getBackdropPath();
             imageToLoad = movie.getBackdropPathLand();
         }
         if (imageToLoad != null) {
@@ -128,6 +131,13 @@ public class MovieView extends RelativeLayout {
 
         tvTitle.setText(movie.getOriginalTitle());
         tvOverview.setText(truncateOverview(movie.getOverview()));
+    }else {
+
+            LayoutInflater.from(getContext()).inflate(R.layout.item_popular_movie, this, true);
+            setupChildren();
+            imageToLoad = movie.getBackdropPath();
+            drawImage(imageToLoad);
+        }
     }
 
     //reduire la quantite de caractere

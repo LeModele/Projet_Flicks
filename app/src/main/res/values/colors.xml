@@ -6,4 +6,7 @@
     <color name="bleu">#e26faee6</color>
     <color name="jaune">#e2c6b90a</color>
     <color name="moins_jaune">#e9e16e</color>
+    <color name="Rouge">#edff0000</color>
+    <color name="moins_Rouge">#54ff0000</color>
+    <color name="Blanc">#FFFFFFFF</color>
 </resources>

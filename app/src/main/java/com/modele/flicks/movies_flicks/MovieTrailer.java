@@ -40,7 +40,6 @@ public class MovieTrailer extends YouTubeBaseActivity  {
         String lien="/videos?api_key=";
         trailers = new ArrayList<>();
 
-       // String url = Utils.getBaseURL() + Integer.toString(movieID) + "209112/videos?api_key=" + Utils.getMovieDBAPIkey();
         String url = Utils.getBaseURLtube() + Integer.toString(movieID) + lien + Utils.getMovieDBAPIkey();
         fetchMovieVideos(url);
 

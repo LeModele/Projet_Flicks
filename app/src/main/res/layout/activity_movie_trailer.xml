@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center_horizontal"
-                android:text="TextView"
+                android:textColor="@color/Rouge"
+                android:text="..."
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
@@ -33,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:foregroundGravity="center_vertical" />
         </LinearLayout>
     </ScrollView>

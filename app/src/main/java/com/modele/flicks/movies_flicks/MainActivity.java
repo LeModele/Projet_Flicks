@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle("Liste Film");
        // setTitle("les Films");
        // getActionBar().setIcon(R.drawable.movie);
         //set up adapter
@@ -118,24 +119,6 @@ public class MainActivity extends AppCompatActivity {
         boolean connectivity = Utils.checkForConnectivity(this);
 
         if (!connectivity) {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-// Add the buttons
-            builder.setTitle("Connexion");
-            builder.setMessage("Verifier la Connexion internet");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    fetchData(Utils.getClient());
-                }
-            });
-
-// Set other dialog properties
-
-
-// Create the AlertDialog
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            // Showing Alert Message
 
             Toast.makeText(this, "Impossible de continuer, verifier la connxion internet", Toast.LENGTH_LONG).show();
         }
